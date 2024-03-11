@@ -15,7 +15,8 @@ body {
 }
 
 .app {
-  background: linear-gradient(180deg, #6192c4 0%, #07386b 100%);
+  background: rgb(2, 0, 36);
+  background: linear-gradient(347deg, rgb(2, 0, 36) 0%, rgb(16, 16, 92) 46%, rgb(0, 212, 255) 96%);
   border-radius: 12px;
   padding: 24px 25px;
   margin-top: 34px;
@@ -87,17 +88,17 @@ svg {
   margin-top: auto;
 }
 .controls .icon-arrow {
-  fill: #ff874a;
+  fill: #ffffff;
 }
 .controls .icon-pause {
   fill: none;
-  stroke: #ff874a;
+  stroke: #ffffff;
   display: none;
   width: 40px;
   height: 40px;
 }
 .controls .icon-play {
-  fill: #ff874a;
+  fill: #ffffff;
   display: block;
   width: 40px;
   height: 40px;
@@ -106,10 +107,10 @@ svg {
   cursor: pointer;
 }
 .controls svg:not(.icon-pause):hover {
-  fill: #ffba97;
+  fill: white;
 }
 .controls svg:not(.icon-pause):active {
-  fill: #fd5500;
+  fill: #d9d9d9;
 }
 .controls-buttons {
   display: flex;
@@ -147,7 +148,7 @@ svg {
   overflow: hidden;
 }
 .progress-current {
-  background: #ff874a;
+  background: #3f3f3f;
   border-radius: 12px;
   position: absolute;
   top: 0;
@@ -233,7 +234,7 @@ svg {
 .item-play svg {
   width: 32px;
   height: 32px;
-  fill: #ff874a;
+  fill: #ffffff;
   transition: transform 0.5s ease-in-out;
 }
 
@@ -249,25 +250,25 @@ svg {
 .handling .icon-repeat, .handling .icon-sound {
   width: 24px;
   height: 24px;
-  fill: #ff874a;
+  fill: #ffffff;
 }
 .handling .icon-repeat:hover, .handling .icon-sound:hover {
-  fill: #ffba97;
+  fill: white;
 }
 .handling .icon-repeat:active, .handling .icon-sound:active {
-  fill: #fd5500;
+  fill: #d9d9d9;
 }
 .handling .icon-shuffle {
   width: 20px;
   height: 20px;
   fill: white;
-  stroke: #ff874a;
+  stroke: #ffffff;
 }
 .handling .icon-shuffle:hover {
-  stroke: #ffba97;
+  stroke: white;
 }
 .handling .icon-shuffle:active {
-  stroke: #fd5500;
+  stroke: #d9d9d9;
 }
 .handling-repeat.active svg {
   fill: #a43700;
@@ -284,7 +285,7 @@ svg {
   position: absolute;
   left: 0;
   top: 100%;
-  background: #ff874a;
+  background: #ffffff;
   padding: 15px;
   border-radius: 6px;
 }

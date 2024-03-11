@@ -1,6 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Ubuntu:300,300italic,regular,italic,500,500italic,700,700italic);
 
-$primary: #ff874a;
+$primary: #ffffff;
 
 @mixin coverBg() {
   background-size: cover;
@@ -44,7 +44,8 @@ body {
 }
 
 .app {
-  background: linear-gradient(180deg, #6192c4 0%, #07386b 100%);
+  background: rgb(2,0,36);
+  background: linear-gradient(347deg, rgba(2,0,36,1) 0%, rgba(16,16,92,1) 46%, rgba(0,212,255,1) 96%);
   border-radius: 12px;
   padding: 24px 25px;
   margin-top: 34px;
@@ -195,7 +196,7 @@ svg {
   overflow: hidden;
 
   &-current {
-    background: $primary;
+    background: #3f3f3f;
     border-radius: 12px;
     position: absolute;
     top: 0;
