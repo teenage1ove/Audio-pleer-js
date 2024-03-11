@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Audio pleer</title>
     <link rel="stylesheet" href="assets/scss/reset.css">
-    <link rel="stylesheet" href="assets/scss/main.css">
+    <link rel="stylesheet" href="assets/scss/styles.css">
 </head>
 <body>
     <div class="root">
@@ -14,10 +14,91 @@
         <main class="app">
             <div class="content">
                 <div class="handling">
-                    <div class="handling-sound"></div>
+                    <div class="handling-sound" title="Volume">
+                        <svg class="icon-sound">
+                            <use xlink:href="./assets/images/sprite.svg#sound"></use>
+                        </svg>
+
+                        <div class="volume">
+                            <input min="0" max="1" step="0.1" value="0.5" type="range" name="volume" class="controls-volume">
+                        </div>
+                    </div>
+
+                    <div class="handling-repeat" title="Repeat">
+                        <svg class="icon-sound">
+                            <use xlink:href="./assets/images/sprite.svg#repeat"></use>
+                        </svg>
+                    </div>
+
+                    <div class="handling-shuffle" title="Shuffle">
+                        <svg class="icon-shuffle">
+                            <use xlink:href="./assets/images/sprite.svg#shuffle"></use>
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="current">
+                    <div class="current-image" style="background-image: url('./assets/images/beat1.jpg');"></div>
+
+                    <div class="current-info">
+                        <div class="current-info__top">
+                            <div class="current-info__titles">
+                                <h2 class="current-info__group">NF</h2>
+                                <h3 class="current-info__track">The Search</h3>
+                            </div>
+
+                            <div class="current-info__year">2023</div>
+                        </div>
+
+                        <div class="controls">
+                            <div class="controls-buttons">
+                                <button class="controls-button controls-prev">
+                                    <svg class="icon-arrow">
+                                        <use xlink:href="./assets/images/sprite.svg#arrow"></use>
+                                    </svg>
+                                </button>
+    
+                                <button class="controls-button controls-play">
+                                    <svg class="icon-pause">
+                                        <use xlink:href="./assets/images/sprite.svg#pause"></use>
+                                    </svg>
+                                    <svg class="icon-play">
+                                        <use xlink:href="./assets/images/sprite.svg#play"></use>
+                                    </svg>
+                                </button>
+    
+                                <button class="controls-button controls-next">
+                                    <svg class="icon-arrow">
+                                        <use xlink:href="./assets/images/sprite.svg#arrow"></use>
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <div class="controls-progress">
+                                <div class="progress">
+                                    <div class="progress-current" style="width: 20%;"></div>
+                                </div>
+
+                                <div class="timeline">
+                                    <span class="timeline-start">00:32</span>
+                                    <span class="timeline-end">5:32</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="list">
+                    <p class="list-title">All tracks</p>
+
+                    <div class="items">
+                        
+                    </div>
                 </div>
             </div>
         </main>
     </div>
+
+    <script type="module" src="assets/js/main.js"></script>
 </body>
 </html>
