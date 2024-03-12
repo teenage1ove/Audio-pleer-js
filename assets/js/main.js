@@ -6,6 +6,7 @@ const AudioController = {
         audios: [],
         current: {},
         playing: false,
+        repeating: false,
     },
     init() {
         this.initVariables()
@@ -41,16 +42,25 @@ const AudioController = {
         this.playButton = null
         this.audiolist = document.querySelector('.items')
         this.currentItem = document.querySelector('.current')
+        this.repeatButton = document.querySelector('.handling-repeat')
     },
 
     initEvents() {
         this.audiolist.addEventListener('click', this.handleItem.bind(this))
+        this.repeatButton.addEventListener('click', this.handleRepeat.bind(this))
+    },
+
+    handleRepeat({ currentTarget }) {
+        const { repeating } = this.state
+
+        currentTarget.classList.toggle('active', !repeating)
+        this.state.repeating = !repeating
     },
 
     handleAudioPlay() {
         const { playing, current } = this.state
         const { audio } = current
-
+        
         !playing ? audio.play() : audio.pause()
         
         this.state.playing = !playing
@@ -58,11 +68,32 @@ const AudioController = {
     },
 
     handleNext() {
-        
+        const { current } = this.state
+
+        const currentItem = document.querySelector(`[data-id="${current.id}"]`)
+        const next = currentItem.nextSibling?.dataset
+        const first = this.audiolist.firstChild?.dataset
+
+        const itemId = next?.id || first?.id
+
+        if (!itemId) return
+
+        this.setCurrentItem(itemId)
+
     },
 
     handlePrev() {
+        const { current } = this.state
 
+        const currentItem = document.querySelector(`[data-id="${current.id}"]`)
+        const prev = currentItem.previousSibling?.dataset
+        const last = this.audiolist.lastChild?.dataset
+
+        const itemId = prev?.id || last?.id
+
+        if (!itemId) return
+
+        this.setCurrentItem(itemId)
     },
 
     handlePlayer() {
@@ -88,6 +119,14 @@ const AudioController = {
             timeline.innerHTML = toMinAndSec(currentTime)
             progress.style.width = `${width}%`
         })
+
+        audio.addEventListener('ended', ({target}) => {
+            target.currentTime = 0
+            progress.style.width = `0%`
+            
+
+            this.state.repeating ? target.play() : this.handleNext()
+        })
     },
 
     renderCurrentItem({link, track, group, genre, duration, year}) {
@@ -112,7 +151,7 @@ const AudioController = {
                                     </svg>
                                 </button>
 
-                                <button class="controls-button controls-play playing">
+                                <button class="controls-button controls-play">
                                     <svg class="icon-pause">
                                         <use xlink:href="./assets/images/sprite.svg#pause"></use>
                                     </svg>
@@ -142,15 +181,36 @@ const AudioController = {
                 </div>`
     },
 
+    togglePlaying() {
+        const { playing, current} = this.state
+        const {audio} = current
+
+        playing ? audio.play() : audio.pause()
+        
+        this.playButton.classList.toggle('playing', playing)
+    },
+
+    pauseCurrentAudio() {
+        const { current: { audio } } = this.state
+        if(!audio) return
+        audio.pause()
+        audio.currentTime = 0
+    },
+
     setCurrentItem(itemId) {
         const current = this.state.audios.find(({id}) => +id === +itemId)
         
         if(!current) return
 
+        this.pauseCurrentAudio()
         this.state.current = current
         this.currentItem.innerHTML = this.renderCurrentItem(current)
         this.handlePlayer()
         this.audioUpdateHandler(current)
+
+        setTimeout(() => {
+            this.togglePlaying()
+        }, 1)
     },
 
     handleItem( {target} ) {
