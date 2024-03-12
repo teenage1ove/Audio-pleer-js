@@ -8,3 +8,5 @@ export const toMinAndSec = (duration) => {
 
     return `${minutes}:${seconds}`
 }
+
+export const shuffle = (array) => array.sort(() => 0.5*Math.random())
