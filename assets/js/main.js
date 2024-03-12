@@ -60,7 +60,7 @@ const AudioController = {
         const shuffled = shuffle([...children])
 
         this.audiolist.innerHTML = ''
-        shuffled.forEach()
+        shuffled.forEach(item => this.audiolist.appendChild(item))
     },
 
     handleVolume({target: {value}}) {
